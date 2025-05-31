@@ -115,8 +115,7 @@
                              Maximum="500" 
                              Increment="1"
                              Value="10"
-                             HorizontalOptions="Center"
-                             BackgroundColor="DarkGray"/>
+                             HorizontalOptions="Center"/>
                 </VerticalStackLayout>
             </Frame>
 
