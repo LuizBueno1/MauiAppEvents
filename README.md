@@ -36,25 +36,25 @@ The application showcases modern design principles with vibrant color schemes, p
 ### 🎨 Event Creation Interface
 *Craft your perfect celebration*
 
-<img src="screenshots/party-booking-1.png" alt="Party Booking Screen 1" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
+<img src="images/Party-booking-1.jpeg" alt="Party Booking Screen 1" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
 
-<img src="screenshots/party-booking-2.png" alt="Party Booking Screen 2" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
+<img src="images/Party-booking-2.jpeg" alt="Party Booking Screen 2" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
 
 ---
 
 ### 🎊 Event Confirmation Experience
 *Review and finalize your celebration details*
 
-<img src="screenshots/party-confirmation-1.png" alt="Party Confirmation Screen 1" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
+<img src="images/Party-confirmation-1.jpeg" alt="Party Confirmation Screen 1" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
 
-<img src="screenshots/party-confirmation-2.png" alt="Party Confirmation Screen 2" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
+<img src="images/Party-confirmation-2.jpeg" alt="Party Confirmation Screen 2" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
 
 ---
 
 ### ℹ️ About & Credits
 *Application information and developer showcase*
 
-<img src="screenshots/about-page.png" alt="About Page Screen" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
+<img src="images/About.jpeg" alt="About Page Screen" width="300" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 20px;">
 
 </div>
 
