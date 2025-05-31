@@ -5,104 +5,187 @@
              Title="PartyBooking"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#FDF2F8">
-    <VerticalStackLayout VerticalOptions="Center"
-                         Padding="10"
-                         Spacing="10">
-        <Label 
-            Text="Party Event Organizer"
-            FontFamily="PoppinsSemiBold"
-            FontSize="32"
-            HorizontalOptions="Center"
-            TextColor="#BE185D"/>
 
-        <Frame Padding="10"
-               BackgroundColor="#FFFFFF"
-               BorderColor="#F3E8FF">
-            <VerticalStackLayout Spacing="10">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
 
-                <Grid RowDefinitions="Auto, Auto"
-                      ColumnDefinitions="*, *, 2*">
+            <!-- Header -->
+            <VerticalStackLayout Spacing="5" Margin="0,10,0,30">
+                <Label 
+                    Text="🎉 Event Organizer"
+                    FontFamily="PoppinsSemiBold"
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    TextColor="#BE185D"/>
+                <Label 
+                    Text="Create your perfect event"
+                    FontFamily="PoppinsRegular"
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    TextColor="#6B7280"/>
+            </VerticalStackLayout>
 
-                    <Label Grid.Row="0" Grid.Column="0" Text="Adults: " TextColor="#1F2937" FontFamily="PoppinsRegular"/>
-                    <Label Grid.Row="0" Grid.Column="1" TextColor="#7C3AED"
-                            Text="{Binding Value}" BindingContext="{x:Reference stp_adults}" FontFamily="PoppinsMedium"/>
-                    <Stepper Grid.Row="0" Grid.Column="2" x:Name="stp_adults"
-                             Minimum="0" Maximum="50" Increment="1"/>
+            <!-- Event Name Section -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="🎯" FontSize="20"/>
+                        <Label Text="Event Name" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <Entry x:Name="entry_eventName" 
+                           Placeholder="Enter your event name" 
+                           PlaceholderColor="#9CA3AF"
+                           TextColor="#1F2937"
+                           FontFamily="PoppinsRegular"
+                           BackgroundColor="#F9FAFB"/>
+                </VerticalStackLayout>
+            </Frame>
 
-                    <Label Grid.Row="1" Grid.Column="0" Text="Children: " TextColor="#1F2937" FontFamily="PoppinsRegular"/>
-                    <Label Grid.Row="1" Grid.Column="1" TextColor="#7C3AED"
-                           Text="{Binding Value}" BindingContext="{x:Reference stp_children}" FontFamily="PoppinsMedium"/>
-                    <Stepper Grid.Row="1" Grid.Column="2" x:Name="stp_children"
-                             Minimum="0" Maximum="30" Increment="1"/>
+            <!-- Event Period Section -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="📅" FontSize="20"/>
+                        <Label Text="Event Period" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
 
-                </Grid>
-
-                <Frame Padding="10"
-                       Margin="10"
-                       BackgroundColor="#FEF3C7">
-                    <VerticalStackLayout>
-
-                        <Label Text="Choose your Party Package"
-                               TextTransform="Uppercase"
-                               FontSize="Subtitle"
-                               TextColor="#BE185D"
-                               FontFamily="PoppinsMedium"/>
-
-                        <Picker x:Name="pck_package" Title="Select your Package"
-                                ItemDisplayBinding="{Binding Description}"/>
-
-                    </VerticalStackLayout>
-                </Frame>
-
-                <Frame Padding="10" 
-                       Margin="10"
-                       BackgroundColor="#DBEAFE">
-                    <VerticalStackLayout Spacing="10">
-                        <Label Text="Event Period"
-                               TextTransform="Uppercase"
-                               FontSize="Subtitle"
-                               TextColor="#BE185D"
-                               FontFamily="PoppinsMedium"/>
-
-                        <HorizontalStackLayout Spacing="20" HorizontalOptions="CenterAndExpand">
-                            <Label Text="Start Date" VerticalOptions="Center" TextColor="#1F2937"
-                                   FontFamily="PoppinsRegular"/>
+                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *" ColumnSpacing="15" RowSpacing="15">
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="0" Spacing="8">
+                            <Label Text="Start Date" 
+                                   FontFamily="PoppinsMedium" 
+                                   TextColor="#374151" 
+                                   FontSize="14"/>
                             <DatePicker x:Name="dtpck_start"
                                         DateSelected="dtpck_start_DateSelected"
-                                        Format="dd/MM/yyyy" />
-                        </HorizontalStackLayout>
+                                        Format="dd/MM/yyyy"
+                                        BackgroundColor="#F9FAFB"
+                                        TextColor="#1F2937"/>
+                        </VerticalStackLayout>
 
-                        <HorizontalStackLayout Spacing="20" HorizontalOptions="CenterAndExpand">
-                            <Label Text="End Date" VerticalOptions="Center" TextColor="#1F2937"
-                                   FontFamily="PoppinsRegular"/>
-                            <DatePicker x:Name="dtpck_end" Format="dd/MM/yyyy"/>
-                        </HorizontalStackLayout>
+                        <VerticalStackLayout Grid.Row="0" Grid.Column="1" Spacing="8">
+                            <Label Text="End Date" 
+                                   FontFamily="PoppinsMedium" 
+                                   TextColor="#374151" 
+                                   FontSize="14"/>
+                            <DatePicker x:Name="dtpck_end" 
+                                        Format="dd/MM/yyyy"
+                                        BackgroundColor="#F9FAFB"
+                                        TextColor="#1F2937"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
 
-                    </VerticalStackLayout>
-                </Frame>
+            <!-- Participants Section -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="👥" FontSize="20"/>
+                        <Label Text="Participants" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
 
-                <Button Text="Plan My Party!" 
+                    <HorizontalStackLayout Spacing="15" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Number of participants:" 
+                               FontFamily="PoppinsMedium" 
+                               TextColor="#374151"
+                               VerticalOptions="Center"/>
+                        <Frame Padding="10,5" BackgroundColor="#F3E8FF" BorderColor="#7C3AED">
+                            <Label Text="{Binding Value}" 
+                                   BindingContext="{x:Reference stp_participants}" 
+                                   FontFamily="PoppinsSemiBold"
+                                   TextColor="#7C3AED"
+                                   FontSize="18"/>
+                        </Frame>
+                    </HorizontalStackLayout>
+
+                    <Stepper x:Name="stp_participants"
+                             Minimum="1" 
+                             Maximum="500" 
+                             Increment="1"
+                             Value="10"
+                             HorizontalOptions="Center"
+                             BackgroundColor="DarkGray"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Event Location Section -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="📍" FontSize="20"/>
+                        <Label Text="Event Location" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <Entry x:Name="entry_location" 
+                           Placeholder="Enter event location/address" 
+                           PlaceholderColor="#9CA3AF"
+                           TextColor="#1F2937"
+                           FontFamily="PoppinsRegular"
+                           BackgroundColor="#F9FAFB"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Cost Per Participant Section -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <HorizontalStackLayout Spacing="8">
+                        <Label Text="💰" FontSize="20"/>
+                        <Label Text="Cost Per Participant" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <Entry x:Name="entry_costPerParticipant" 
+                           Placeholder="0.00" 
+                           PlaceholderColor="#9CA3AF"
+                           TextColor="#1F2937"
+                           FontFamily="PoppinsRegular"
+                           BackgroundColor="#F9FAFB"
+                           Keyboard="Numeric"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <VerticalStackLayout Spacing="15" Margin="0,20,0,30">
+                <Button Text="🎉 Create My Event!" 
                         Clicked="Button_Clicked" 
-                        BackgroundColor="#7C3AED" 
+                        BackgroundColor="#10B981" 
                         TextColor="#FFFFFF"
-                        FontFamily="PoppinsMedium"
-                        FontSize="16"/>
+                        FontFamily="PoppinsSemiBold"
+                        FontSize="16"
+                        HeightRequest="50"/>
 
+                <Button 
+                    x:Name="btn_about"
+                    Text="ℹ️ About"
+                    FontSize="14"
+                    HeightRequest="40"
+                    Opacity="0.8"
+                    HorizontalOptions="Center"
+                    Clicked="Btn_About_Clicked"
+                    BackgroundColor="Transparent"
+                    TextColor="#6B7280"
+                    BorderColor="#6B7280"
+                    BorderWidth="1"/>
             </VerticalStackLayout>
-        </Frame>
 
-        <Button 
-            x:Name="btn_about"
-            Text="About"
-            FontSize="12"
-            WidthRequest="80"
-            HeightRequest="40"
-            Opacity="0.7"
-            HorizontalOptions="Start"
-            VerticalOptions="Start"
-            Margin="10"
-            Clicked="Btn_About_Clicked"
-            BackgroundColor="#6B7280"
-            TextColor="#1F2937"/>
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>

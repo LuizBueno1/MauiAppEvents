@@ -6,92 +6,231 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#FDF2F8">
 
-    <VerticalStackLayout VerticalOptions="Center" Padding="10" Spacing="15">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
 
-        <Label Text="🎉 Party Confirmed! 🎉"
-               TextColor="#BE185D"
-               FontFamily="PlayfairDisplay"
-               FontSize="28"
-               HorizontalTextAlignment="Center"
-               Margin="0,0,0,10"/>
+            <!-- Header -->
+            <VerticalStackLayout Spacing="10" Margin="0,20,0,30">
+                <Label Text="🎉 Event Confirmed! 🎉"
+                       TextColor="#BE185D"
+                       FontFamily="PlayfairDisplay"
+                       FontSize="32"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"/>
+                <Label Text="Your event has been successfully created"
+                       TextColor="#6B7280"
+                       FontFamily="PoppinsRegular"
+                       FontSize="16"
+                       HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
 
-        <Label Text="{Binding SelectedPackage.Description}"
-               TextColor="#7C3AED"
-               FontFamily="PlayfairDisplay"
-               FontSize="24"
-               HorizontalTextAlignment="Center"
-               FontAttributes="Bold"/>
+            <!-- Event Name -->
+            <Frame Padding="25" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="8">
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Label Text="🎯" FontSize="24"/>
+                        <Label Text="Event Name" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="16" 
+                               TextColor="#6B7280"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <Label Text="{Binding EventName}"
+                           TextColor="#1F2937"
+                           FontFamily="PlayfairDisplay"
+                           FontSize="24"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </Frame>
 
-        <Frame Margin="5" BackgroundColor="#FFFFFF" Padding="15" BorderColor="#E5E7EB">
-            <StackLayout Orientation="Horizontal">
-                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="👨‍👩‍👧‍👦 Adults: " TextColor="#1F2937" FontFamily="PoppinsRegular"/>
-                    <Label Text="{Binding AdultGuests}" TextColor="#10B981" FontFamily="PoppinsMedium"/>
-                </HorizontalStackLayout>
+            <!-- Event Period -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="📅" FontSize="20"/>
+                        <Label Text="Event Period" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"/>
+                    </HorizontalStackLayout>
 
-                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                    <Label Text="🧒 Children: " TextColor="#1F2937" FontFamily="PoppinsRegular"/>
-                    <Label Text="{Binding ChildrenGuests}" TextColor="#10B981" FontFamily="PoppinsMedium"/>
-                </HorizontalStackLayout>
-            </StackLayout>
-        </Frame>
+                    <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto" ColumnSpacing="10" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" 
+                               Text="Start Date" 
+                               TextColor="#6B7280" 
+                               FontFamily="PoppinsMedium"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Grid.Row="0" Grid.Column="1" 
+                               Text="End Date" 
+                               TextColor="#6B7280" 
+                               FontFamily="PoppinsMedium"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Grid.Row="0" Grid.Column="2" 
+                               Text="Duration" 
+                               TextColor="#6B7280" 
+                               FontFamily="PoppinsMedium"
+                               HorizontalTextAlignment="Center"/>
 
-        <Frame Margin="5" BackgroundColor="#FEF3C7" Padding="12" BorderColor="#F59E0B">
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                <Label Text="👥 Total Guests: " TextColor="#1F2937" FontFamily="PoppinsMedium" FontSize="16"/>
-                <Label Text="{Binding TotalGuests}" TextColor="#F59E0B" FontFamily="PoppinsSemiBold" FontSize="16"/>
-            </HorizontalStackLayout>
-        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="0" Padding="10" BackgroundColor="#DBEAFE" BorderColor="#3B82F6">
+                            <Label Text="{Binding StartDate, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                   TextColor="#1E40AF"
+                                   FontFamily="PoppinsSemiBold"
+                                   HorizontalTextAlignment="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="1" Padding="10" BackgroundColor="#DBEAFE" BorderColor="#3B82F6">
+                            <Label Text="{Binding EndDate, StringFormat='{}{0:dd/MM/yyyy}'}"
+                                   TextColor="#1E40AF"
+                                   FontFamily="PoppinsSemiBold"
+                                   HorizontalTextAlignment="Center"/>
+                        </Frame>
+                        <Frame Grid.Row="1" Grid.Column="2" Padding="10" BackgroundColor="#FEF3C7" BorderColor="#F59E0B">
+                            <Label Text="{Binding EventDuration, StringFormat='{0} day(s)'}"
+                                   TextColor="#D97706"
+                                   FontFamily="PoppinsSemiBold"
+                                   HorizontalTextAlignment="Center"/>
+                        </Frame>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
 
-        <Frame Margin="5" BackgroundColor="#FFFFFF" Padding="15" BorderColor="#E5E7EB">
-            <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto">
-                <Label Grid.Row="0" Grid.Column="0" Text="📅 Start Date" TextColor="#1F2937" FontFamily="PoppinsRegular"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="📅 End Date" TextColor="#1F2937" FontFamily="PoppinsRegular"/>
-                <Label Grid.Row="0" Grid.Column="2" Text="⏱️ Duration" TextColor="#1F2937" FontFamily="PoppinsRegular"/>
+            <!-- Participants Info -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="👥" FontSize="20"/>
+                        <Label Text="Participants" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"/>
+                    </HorizontalStackLayout>
 
-                <Label Grid.Row="1" Grid.Column="0" 
-                       Text="{Binding StartDate, StringFormat='{}{0:dd/MM/yyyy}'}"
-                       TextColor="#10B981"
-                       FontFamily="PoppinsMedium"/>
-                <Label Grid.Row="1" Grid.Column="1"
-                       Text="{Binding EndDate, StringFormat='{}{0:dd/MM/yyyy}'}"
-                       TextColor="#10B981"
-                       FontFamily="PoppinsMedium"/>
-                <Label Grid.Row="1" Grid.Column="2"
-                       Text="{Binding EventDuration, StringFormat='{0} day(s)'}"
-                       TextColor="#10B981"
-                       FontFamily="PoppinsMedium"/>
+                    <Frame Padding="15" BackgroundColor="#ECFDF5" BorderColor="#10B981" HorizontalOptions="Center">
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="Total:" 
+                                   TextColor="#065F46" 
+                                   FontFamily="PoppinsMedium" 
+                                   FontSize="16"
+                                   VerticalOptions="Center"/>
+                            <Label Text="{Binding NumberOfParticipants}" 
+                                   TextColor="#059669" 
+                                   FontFamily="PoppinsBold" 
+                                   FontSize="24"
+                                   VerticalOptions="Center"/>
+                            <Label Text="people" 
+                                   TextColor="#065F46" 
+                                   FontFamily="PoppinsMedium" 
+                                   FontSize="16"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </VerticalStackLayout>
+            </Frame>
 
-            </Grid>
-        </Frame>
+            <!-- Location -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="📍" FontSize="20"/>
+                        <Label Text="Event Location" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"/>
+                    </HorizontalStackLayout>
 
-        <Frame Margin="5" BackgroundColor="#7C3AED" Padding="20" BorderColor="#7C3AED">
-            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                <Label Text="💰 Total Investment: " TextColor="#FFFFFF" FontSize="18" FontFamily="PoppinsMedium"/>
+                    <Frame Padding="15" BackgroundColor="#FEF7FF" BorderColor="#A855F7">
+                        <Label Text="{Binding EventLocation}"
+                               TextColor="#7C3AED"
+                               FontFamily="PoppinsMedium"
+                               FontSize="16"
+                               HorizontalTextAlignment="Center"/>
+                    </Frame>
+                </VerticalStackLayout>
+            </Frame>
 
-                <Label Text="{Binding TotalValue, StringFormat='{}{0:C}'}"
-                       TextColor="#FFFFFF"
-                       FontSize="20"
-                       FontFamily="PoppinsSemiBold"/>
-            </HorizontalStackLayout>
-        </Frame>
+            <!-- Cost Breakdown -->
+            <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="💰" FontSize="20"/>
+                        <Label Text="Cost Breakdown" 
+                               FontFamily="PoppinsSemiBold" 
+                               FontSize="18" 
+                               TextColor="#1F2937"/>
+                    </HorizontalStackLayout>
 
-        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20" Margin="0,20,0,0">
-            <Button Text="📝 New Party"
-                    Clicked="Button_NewParty_Clicked"
-                    BackgroundColor="#10B981"
-                    TextColor="#FFFFFF"
-                    FontFamily="PoppinsMedium"
-                    WidthRequest="130"/>
+                    <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *" ColumnSpacing="15" RowSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0"
+                               Text="Cost per participant:"
+                               TextColor="#6B7280"
+                               FontFamily="PoppinsMedium"
+                               HorizontalTextAlignment="Start"
+                               Padding="10"/>
+                        <Label Grid.Row="0" Grid.Column="1"
+                               Text="{Binding CostPerParticipant, StringFormat='{}{0:C}'}"
+                               TextColor="#1F2937"
+                               FontFamily="PoppinsSemiBold"
+                               HorizontalTextAlignment="End"
+                               Padding="10"/>
 
-            <Button Text="⬅️ Back"
-                    Clicked="Button_Back_Clicked"
-                    BackgroundColor="#6B7280"
-                    TextColor="#FFFFFF"
-                    FontFamily="PoppinsMedium"
-                    WidthRequest="100"/>
-        </StackLayout>
+                        <Label Grid.Row="1" Grid.Column="0"
+                               Text="Number of participants:"
+                               TextColor="#6B7280"
+                               FontFamily="PoppinsMedium"
+                               HorizontalTextAlignment="Start"
+                               Padding="10"/>
+                        <Label Grid.Row="1" Grid.Column="1"
+                               Text="{Binding NumberOfParticipants}"
+                               TextColor="#1F2937"
+                               FontFamily="PoppinsSemiBold"
+                               HorizontalTextAlignment="End"
+                               Padding="10"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
 
-    </VerticalStackLayout>
+            <!-- Total Investment -->
+            <Frame Padding="25" BackgroundColor="#059669" BorderColor="#059669" HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                        <Label Text="💎" FontSize="24"/>
+                        <Label Text="Total Investment" 
+                               TextColor="#FFFFFF" 
+                               FontSize="18" 
+                               FontFamily="PoppinsSemiBold"
+                               VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+
+                    <Label Text="{Binding TotalValue, StringFormat='{}{0:C}'}"
+                           TextColor="#FFFFFF"
+                           FontSize="28"
+                           FontFamily="PoppinsBold"
+                           HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <VerticalStackLayout Spacing="15" Margin="0,30,0,40">
+                <Button Text="🎉 Create New Event"
+                        Clicked="Button_NewParty_Clicked"
+                        BackgroundColor="#7C3AED"
+                        TextColor="#FFFFFF"
+                        FontFamily="PoppinsSemiBold"
+                        FontSize="16"
+                        HeightRequest="50"/>
+
+                <Button Text="⬅️ Go Back"
+                        Clicked="Button_Back_Clicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#6B7280"
+                        FontFamily="PoppinsMedium"
+                        FontSize="14"
+                        BorderColor="#6B7280"
+                        BorderWidth="1"
+                        HeightRequest="45"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

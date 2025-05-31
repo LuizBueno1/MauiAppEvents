@@ -4,13 +4,9 @@ namespace MauiAppEvents.Views;
 
 public partial class PartyBooking : ContentPage
 {
-    App AppProperties;
     public PartyBooking()
     {
         InitializeComponent();
-
-        AppProperties = (App)Application.Current;
-        pck_package.ItemsSource = AppProperties.packages_list;
 
         dtpck_start.MinimumDate = DateTime.Now;
         dtpck_start.MaximumDate = new DateTime(DateTime.Now.Year + 1, DateTime.Now.Month, DateTime.Now.Day);
@@ -23,25 +19,32 @@ public partial class PartyBooking : ContentPage
     {
         try
         {
-            if (pck_package.SelectedItem == null)
+            if (string.IsNullOrWhiteSpace(entry_eventName.Text))
             {
-                await DisplayAlert("Attention", "Please select a party package.", "OK");
+                await DisplayAlert("Attention", "Please enter the event name.", "OK");
                 return;
             }
 
-            if (stp_adults.Value == 0 && stp_children.Value == 0)
+            if (string.IsNullOrWhiteSpace(entry_location.Text))
             {
-                await DisplayAlert("Attention", "You must have at least 1 guest.", "OK");
+                await DisplayAlert("Attention", "Please enter the event location.", "OK");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(entry_costPerParticipant.Text))
+            {
+                await DisplayAlert("Attention", "Please enter the cost per participant.", "OK");
                 return;
             }
 
             PartyEvent partyEvent = new PartyEvent
             {
-                SelectedPackage = (PartyPackage)pck_package.SelectedItem,
-                AdultGuests = Convert.ToInt32(stp_adults.Value),
-                ChildrenGuests = Convert.ToInt32(stp_children.Value),
+                EventName = entry_eventName.Text,
                 StartDate = dtpck_start.Date,
-                EndDate = dtpck_end.Date
+                EndDate = dtpck_end.Date,
+                NumberOfParticipants = Convert.ToInt32(stp_participants.Value),
+                EventLocation = entry_location.Text,
+                CostPerParticipant = Convert.ToDecimal(entry_costPerParticipant.Text)
             };
 
             await Navigation.PushAsync(new PartyConfirmation()
