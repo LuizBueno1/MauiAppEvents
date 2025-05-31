@@ -1,4 +1,6 @@
-﻿namespace MauiAppEvents
+﻿using MauiAppEvents.Models;
+
+namespace MauiAppEvents
 {
     public partial class App : Application
     {

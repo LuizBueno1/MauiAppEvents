@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppEvents.Views.AboutPage"
+             Title="AboutPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FDF2F8">
+
+    <VerticalStackLayout VerticalOptions="Center" 
+                         HorizontalOptions="Center"
+                         Padding="10"
+                         Spacing="20">
+        <Frame Padding="20" BackgroundColor="#FFFFFF" BorderColor="#E5E7EB">
+            <VerticalStackLayout Spacing="15">
+                <Label Text="🎉 Party Organizer App"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#BE185D"
+                       HorizontalOptions="Center"
+                       FontFamily="PlayfairDisplay"/>
+
+                <BoxView HeightRequest="2" BackgroundColor="#E5E7EB" Margin="0,5"/>
+
+                <Label Text="Developer:"
+                       FontAttributes="Bold"
+                       TextColor="#1F2937"
+                       FontFamily="PoppinsMedium"/>
+                <Label Text="Luiz Henrique Bueno" 
+                       TextColor="#7C3AED"
+                       FontFamily="PoppinsRegular"/>
+
+                <Label Text="Development Date:"
+                       FontAttributes="Bold"
+                       TextColor="#1F2937"
+                       FontFamily="PoppinsMedium"/>
+                <Label Text="May, 2025"
+                       TextColor="#7C3AED"
+                       FontFamily="PoppinsRegular"/>
+            </VerticalStackLayout>
+        </Frame>
+
+        <Button Text="🔙 Return" 
+                WidthRequest="150"
+                Clicked="Button_Clicked"
+                BackgroundColor="#7C3AED"
+                TextColor="#FFFFFF"
+                FontFamily="PoppinsMedium"/>
+    </VerticalStackLayout>
+
+</ContentPage>

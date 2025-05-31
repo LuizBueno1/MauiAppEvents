@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppEvents.Views.PartyConfirmation"
+             Title="PartyConfirmation"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FDF2F8">
+
+    <VerticalStackLayout VerticalOptions="Center" Padding="10" Spacing="15">
+
+        <Label Text="🎉 Party Confirmed! 🎉"
+               TextColor="#BE185D"
+               FontFamily="PlayfairDisplay"
+               FontSize="28"
+               HorizontalTextAlignment="Center"
+               Margin="0,0,0,10"/>
+
+        <Label Text="{Binding SelectedPackage.Description}"
+               TextColor="#7C3AED"
+               FontFamily="PlayfairDisplay"
+               FontSize="24"
+               HorizontalTextAlignment="Center"
+               FontAttributes="Bold"/>
+
+        <Frame Margin="5" BackgroundColor="#FFFFFF" Padding="15" BorderColor="#E5E7EB">
+            <StackLayout Orientation="Horizontal">
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="👨‍👩‍👧‍👦 Adults: " TextColor="#1F2937" FontFamily="PoppinsRegular"/>
+                    <Label Text="{Binding AdultGuests}" TextColor="#10B981" FontFamily="PoppinsMedium"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                    <Label Text="🧒 Children: " TextColor="#1F2937" FontFamily="PoppinsRegular"/>
+                    <Label Text="{Binding ChildrenGuests}" TextColor="#10B981" FontFamily="PoppinsMedium"/>
+                </HorizontalStackLayout>
+            </StackLayout>
+        </Frame>
+
+        <Frame Margin="5" BackgroundColor="#FEF3C7" Padding="12" BorderColor="#F59E0B">
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                <Label Text="👥 Total Guests: " TextColor="#1F2937" FontFamily="PoppinsMedium" FontSize="16"/>
+                <Label Text="{Binding TotalGuests}" TextColor="#F59E0B" FontFamily="PoppinsSemiBold" FontSize="16"/>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Frame Margin="5" BackgroundColor="#FFFFFF" Padding="15" BorderColor="#E5E7EB">
+            <Grid ColumnDefinitions="*, *, *" RowDefinitions="Auto, Auto">
+                <Label Grid.Row="0" Grid.Column="0" Text="📅 Start Date" TextColor="#1F2937" FontFamily="PoppinsRegular"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="📅 End Date" TextColor="#1F2937" FontFamily="PoppinsRegular"/>
+                <Label Grid.Row="0" Grid.Column="2" Text="⏱️ Duration" TextColor="#1F2937" FontFamily="PoppinsRegular"/>
+
+                <Label Grid.Row="1" Grid.Column="0" 
+                       Text="{Binding StartDate, StringFormat='{}{0:dd/MM/yyyy}'}"
+                       TextColor="#10B981"
+                       FontFamily="PoppinsMedium"/>
+                <Label Grid.Row="1" Grid.Column="1"
+                       Text="{Binding EndDate, StringFormat='{}{0:dd/MM/yyyy}'}"
+                       TextColor="#10B981"
+                       FontFamily="PoppinsMedium"/>
+                <Label Grid.Row="1" Grid.Column="2"
+                       Text="{Binding EventDuration, StringFormat='{0} day(s)'}"
+                       TextColor="#10B981"
+                       FontFamily="PoppinsMedium"/>
+
+            </Grid>
+        </Frame>
+
+        <Frame Margin="5" BackgroundColor="#7C3AED" Padding="20" BorderColor="#7C3AED">
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                <Label Text="💰 Total Investment: " TextColor="#FFFFFF" FontSize="18" FontFamily="PoppinsMedium"/>
+
+                <Label Text="{Binding TotalValue, StringFormat='{}{0:C}'}"
+                       TextColor="#FFFFFF"
+                       FontSize="20"
+                       FontFamily="PoppinsSemiBold"/>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20" Margin="0,20,0,0">
+            <Button Text="📝 New Party"
+                    Clicked="Button_NewParty_Clicked"
+                    BackgroundColor="#10B981"
+                    TextColor="#FFFFFF"
+                    FontFamily="PoppinsMedium"
+                    WidthRequest="130"/>
+
+            <Button Text="⬅️ Back"
+                    Clicked="Button_Back_Clicked"
+                    BackgroundColor="#6B7280"
+                    TextColor="#FFFFFF"
+                    FontFamily="PoppinsMedium"
+                    WidthRequest="100"/>
+        </StackLayout>
+
+    </VerticalStackLayout>
+
+</ContentPage>
